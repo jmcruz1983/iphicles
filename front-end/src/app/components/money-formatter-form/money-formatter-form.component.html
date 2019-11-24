@@ -1,0 +1,17 @@
+<div>
+  <input
+    id='amount'
+    type='text'
+    [(ngModel)]='amount'
+    (keypress)='valueChange($event)'
+    (focus)='cleanUp()'>
+
+  <div id='result' class='results'>{{result}}</div>
+
+  <button
+    id='format'
+    type='submit'
+    (click)="formatPrice()"
+    [disabled]="disabled"
+  >Format</button>
+</div>

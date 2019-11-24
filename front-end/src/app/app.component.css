@@ -1,0 +1,42 @@
+:host {
+  font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 300px;
+}
+
+h2 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+.toolbar {
+  height: 60px;
+  margin: -8px;
+  display: flex;
+  align-items: center;
+  background-color: #0790d2;
+  color: white;
+  font-weight: 600;
+}
+
+.toolbar span {
+  margin: 0 32px;
+}
+
+.content {
+  display: flex;
+  margin: 32px auto;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+
