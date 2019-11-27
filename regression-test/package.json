@@ -1,0 +1,17 @@
+{
+  "name": "regression-test",
+  "version": "1.0.0",
+  "description": "Regression tests",
+  "scripts": {
+    "start": "./node_modules/.bin/cucumber-js --fail-fast --exit --tags @test -f json:report/cucumber_report.json; retval=$?; node report/generate.js; exit $retval",
+    "prepush": "./node_modules/.bin/eslint features"
+  },
+  "private": true,
+  "dependencies": {
+    "eslint": "6.1.0",
+    "cucumber": "5.1.0",
+    "request": "2.88.0",
+    "request-promise": "4.2.4",
+    "cucumber-html-reporter": "5.0.0"
+  }
+}
