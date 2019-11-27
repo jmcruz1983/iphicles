@@ -1,0 +1,39 @@
+{
+  "provider": {
+    "name": "backend"
+  },
+  "consumer": {
+    "name": "frontend"
+  },
+  "interactions": [
+    {
+      "description": "POST request to format a price",
+      "providerState": "price is formatted correctly",
+      "request": {
+        "method": "POST",
+        "path": "/api/formatPrice",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "price": "1234"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "1234"
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.0.3"
+    }
+  }
+}
