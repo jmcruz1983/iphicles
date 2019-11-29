@@ -2,9 +2,9 @@
 set -e
 
 echo '------------------------------------------------------------------------------------------------------------------'
-echo 'Building ui-test enviroment'
-docker build --quiet --target=build-env -t ui-test:latest .
+echo 'Building front-end base image'
+docker build -f DockerfileBase --quiet --target=base-img -t jmcruz1983/node:10.9.0 .
 
 echo '------------------------------------------------------------------------------------------------------------------'
-echo 'Building release ui-test image'
-docker build --quiet --rm -t ui-test:latest .
+echo 'Push image to registry'
+docker push jmcruz1983/node:10.9.0

@@ -1,19 +1,17 @@
 # base image
 FROM gradle:6.0-jre8 AS build-env
 
-# set working directory
 WORKDIR /ui-test
 
 # add ui-test sources
-COPY settings.gradle .
-COPY build.gradle .
-COPY config config
 COPY src src
+COPY config config
+COPY settings.gradle    \
+    build.gradle        \
+    ./
 
 # compiling the code
 RUN gradle
-
-CMD gradle
 
 # Multi stage build
 # final base image

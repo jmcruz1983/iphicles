@@ -1,0 +1,9 @@
+# base image
+FROM node:8.16-slim AS base-img
+
+# set working directory
+WORKDIR /regression-test
+
+# install and cache app dependencies
+COPY package.json .
+RUN npm --quiet install 1>/dev/null
