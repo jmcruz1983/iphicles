@@ -49,3 +49,29 @@ services:
     depends_on:
       proxy:
         condition: service_healthy
+
+  selenium:
+    image: selenium/standalone-chrome-debug:3.14
+    ports:
+      - "9515:4444"
+      - "5900:5900"
+    volumes:
+      - /dev/shm:/dev/shm
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://$$(hostname -i):4444/wd/hub/status | grep -q 'Server is running'"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 10s
+    depends_on:
+      proxy:
+        condition: service_healthy
+
+  ui-test:
+    image: ui-test:latest
+    environment:
+      - DRIVER_URL=http://selenium:4444/wd/hub
+      - FE_URL=http://proxy:5000
+    depends_on:
+      selenium:
+        condition: service_healthy
