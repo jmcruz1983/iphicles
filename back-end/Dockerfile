@@ -1,5 +1,5 @@
 # base image
-FROM maven:3-jdk-11 AS build-env
+FROM maven:3-jdk-8 AS build-env
 
 # setup home directory
 WORKDIR /back-end
@@ -19,7 +19,7 @@ RUN mvn package
 RUN ls /back-end/target
 
 # final base image
-FROM openjdk:11-jre
+FROM openjdk:8-jre
 
 # set deployment directory
 WORKDIR /service
