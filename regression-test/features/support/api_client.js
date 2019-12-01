@@ -13,6 +13,8 @@ APIClient.prototype.formatPrice = function (price) {
     uri: `${this.apiUrl}/formatPrice`,
     json: true,
     body: price
+  }).catch((err) => {
+    throw Error(`${this.apiUrl}/formatPrice ${err}`)
   })
 }
 

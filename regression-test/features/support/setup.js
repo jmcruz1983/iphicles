@@ -24,3 +24,9 @@ defineSupportCode(function({BeforeAll}) {
     console.info(`Configuration: ${JSON.stringify(config)}`)
   })
 })
+
+defineSupportCode(function({Before}) {
+  Before(function () {
+    this.clients = clients
+  })
+})
