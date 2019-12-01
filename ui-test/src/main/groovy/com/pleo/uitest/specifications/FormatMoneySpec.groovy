@@ -8,7 +8,7 @@ import spock.lang.Stepwise
 @Stepwise
 class FormatMoneySpec extends GebSpec {
 
-    def "User formats money"() {
+    def "User inserts a numeric amount"() {
         when:
         to MainPage
 
@@ -24,7 +24,7 @@ class FormatMoneySpec extends GebSpec {
         checkPrice('1 234.37')
     }
 
-    def "User formats money again"() {
+    def "User insert incorrect amount"() {
         when:
         to MainPage
 
@@ -38,5 +38,21 @@ class FormatMoneySpec extends GebSpec {
 
         then:
         checkPrice('NaN')
+    }
+
+    def "User clears the amount"() {
+        when:
+        to MainPage
+
+        then:
+        clearPrice()
+    }
+
+    def "Format is disabled"() {
+        when:
+        at MainPage
+
+        then:
+        checkDisabledFormatButton()
     }
 }

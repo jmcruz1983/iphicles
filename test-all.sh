@@ -12,6 +12,8 @@ docker-compose run regression-test
 
 echo '=================================================================================================================='
 echo '--> Running regression tests'
+docker-compose up -d selenium
+open vnc://localhost:5900
 docker-compose run ui-test
 
 echo '=================================================================================================================='

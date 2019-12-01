@@ -31,6 +31,13 @@ class BasePage extends Page {
         return element.displayed
     }
 
+    boolean checkTextEmpty(Navigator element) {
+        waitFor {
+            element.text().empty
+        }
+        return element.text().empty
+    }
+
     boolean checkTextNotEmpty(Navigator element) {
         waitFor {
             element.text().length() > 0

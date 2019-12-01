@@ -13,6 +13,7 @@ class MainPage extends BasePage {
         amountInput { $('input#amount') }
         resultsDiv { $('div#result') }
         formatButton { $('button#format') }
+        disabledFormatButton { $('button#format[disabled]') }
     }
 
     boolean formatPrice(String price){
@@ -23,9 +24,21 @@ class MainPage extends BasePage {
         return clickAndRetry(formatButton)
     }
 
+    boolean clearPrice(){
+        check(titleSpan)
+        check(amountInput)
+        return amountInput.value('')
+    }
+
     boolean checkPrice(String price){
         check(resultsDiv)
         checkTextNotEmpty(resultsDiv)
         return resultsDiv.text().contains(price)
+    }
+
+    boolean checkDisabledFormatButton(){
+        check(resultsDiv)
+        checkTextEmpty(resultsDiv)
+        return check(disabledFormatButton)
     }
 }
