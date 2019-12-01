@@ -8,11 +8,11 @@ docker-compose up -d proxy
 
 echo '=================================================================================================================='
 echo '--> Running regression tests'
-docker-compose up regression-test
+docker-compose run regression-test
 
 echo '=================================================================================================================='
 echo '--> Running regression tests'
-docker-compose up ui-test
+docker-compose run ui-test
 
 echo '=================================================================================================================='
 echo '--> Tear down'

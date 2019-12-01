@@ -10,7 +10,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 30
-      start_period: 10s
+      start_period: 5s
 
   front-end:
     image: front-end:latest
@@ -20,7 +20,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 30
-      start_period: 10s
+      start_period: 5s
     depends_on:
       back-end:
         condition: service_healthy
@@ -37,7 +37,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 30
-      start_period: 10s
+      start_period: 5s
     depends_on:
       back-end:
         condition: service_healthy
