@@ -46,6 +46,8 @@ services:
 
   regression-test:
     image: regression-test:latest
+    environment:
+      - MODE=CLUSTERED
     depends_on:
       proxy:
         condition: service_healthy
