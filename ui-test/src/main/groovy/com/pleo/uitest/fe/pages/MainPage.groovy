@@ -26,6 +26,6 @@ class MainPage extends BasePage {
     boolean checkPrice(String price){
         check(resultsDiv)
         checkTextNotEmpty(resultsDiv)
-        assert resultsDiv.text().contains(price)
+        return resultsDiv.text().contains(price)
     }
 }

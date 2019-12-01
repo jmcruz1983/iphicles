@@ -21,6 +21,22 @@ class FormatMoneySpec extends GebSpec {
         at MainPage
 
         then:
-        checkPrice('1234.367')
+        checkPrice('1 234.37')
+    }
+
+    def "User formats money again"() {
+        when:
+        to MainPage
+
+        then:
+        formatPrice('abcd.367')
+    }
+
+    def "Money is wrongly formatted"() {
+        when:
+        at MainPage
+
+        then:
+        checkPrice('NaN')
     }
 }
