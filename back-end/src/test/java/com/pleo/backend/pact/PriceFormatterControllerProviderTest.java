@@ -51,4 +51,10 @@ public class PriceFormatterControllerProviderTest {
         when(priceFormatterService.formatPrice(any(String.class)))
                 .thenReturn("1234");
     }
+
+    @State({"price is NaN"})
+    public void nanPriceState() {
+        when(priceFormatterService.formatPrice(any(String.class)))
+                .thenReturn("NaN");
+    }
 }

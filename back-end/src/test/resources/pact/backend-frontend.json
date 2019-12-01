@@ -24,7 +24,32 @@
         "headers": {
           "Content-Type": "application/json"
         },
-        "body": "1234"
+        "body": {
+          "price": "1234"
+        }
+      }
+    },
+    {
+      "description": "POST request to format a price",
+      "providerState": "price is NaN",
+      "request": {
+        "method": "POST",
+        "path": "/api/formatPrice",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "price": "abcd"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "price": "NaN"
+        }
       }
     }
   ],

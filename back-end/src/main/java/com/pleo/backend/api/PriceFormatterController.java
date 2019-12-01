@@ -1,5 +1,6 @@
 package com.pleo.backend.api;
 
+import com.pleo.backend.model.PriceResponse;
 import com.pleo.backend.service.PriceFormatterService;
 
 import org.slf4j.Logger;
@@ -24,6 +25,6 @@ public class PriceFormatterController {
     @PostMapping(value = "/formatPrice", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity formatPrice(@RequestBody String price) {
         logger.info("Attempt to format price {}", price);
-        return ResponseEntity.ok(priceFormatterService.formatPrice(price));
+        return ResponseEntity.ok(new PriceResponse(priceFormatterService.formatPrice(price)));
     }
 }

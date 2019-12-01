@@ -42,6 +42,6 @@ public class PriceFormatterControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string("54321"));
+                .andExpect(content().string("{\"price\":\"54321\"}"));
     }
 }
