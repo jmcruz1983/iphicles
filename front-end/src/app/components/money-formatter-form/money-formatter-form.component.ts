@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MoneyFormatterService } from "../../services/money-formatter/money-formatter.service";
+import { MoneyFormatterService } from '../../services/money-formatter/money-formatter.service';
 
 @Component({
-  selector: 'money-formatter-form',
+  selector: 'app-money-formatter-form',
   templateUrl: './money-formatter-form.component.html',
   styleUrls: ['./money-formatter-form.component.css']
 })
 export class MoneyFormatterFormComponent implements OnInit {
 
-  amount: string = '2310000.159897';
-  result: string = '2 310 000.16';
-  disabled: boolean = false;
+  amount = '2310000.159897';
+  result = '2 310 000.16';
+  disabled = false;
 
   constructor(private moneyFormatter: MoneyFormatterService) { }
 
@@ -27,12 +27,12 @@ export class MoneyFormatterFormComponent implements OnInit {
   }
 
   public formatPrice(): void {
-    if(this.amount) {
+    if (this.amount) {
       this.moneyFormatter
         .formatPrice(this.amount.toString())
         .then(price => {
-          this.result = price.toString()
-        })
+          this.result = price.toString();
+        });
     }
   }
 }

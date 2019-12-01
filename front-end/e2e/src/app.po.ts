@@ -9,7 +9,7 @@ export class AppPage {
     return element(by.css('app-root #title')).getText() as Promise<string>;
   }
 
-  setPriceAmount(price:string) {
+  setPriceAmount(price: string) {
     return element(by.css('input#amount')).sendKeys(price) as Promise<any>;
   }
 

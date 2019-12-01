@@ -1,11 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MoneyFormatterFormComponent } from './money-formatter-form.component';
-import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
-import {anyString, instance, mock, reset, verify, when} from "ts-mockito";
-import { MoneyFormatterService } from "../../services/money-formatter/money-formatter.service";
-import { By } from "@angular/platform-browser";
-import { DebugElement } from "@angular/core";
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import {anyString, instance, mock, verify, when} from 'ts-mockito';
+import { MoneyFormatterService } from '../../services/money-formatter/money-formatter.service';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+import { PriceResponse } from '../../model/price.interfaces';
 
 describe('MoneyFormatterFormComponent', () => {
   let component: MoneyFormatterFormComponent;
@@ -15,9 +16,9 @@ describe('MoneyFormatterFormComponent', () => {
   beforeEach(async(() => {
     moneyFormatterServiceMock = mock(MoneyFormatterService);
     when(moneyFormatterServiceMock.formatPrice(anyString()))
-      .thenReturn(Promise.resolve('54321'));
+      .thenReturn(Promise.resolve(new PriceResponse('54321')));
     TestBed.configureTestingModule({
-      imports:[
+      imports: [
         FormsModule,
         HttpClientModule
       ],
@@ -41,7 +42,7 @@ describe('MoneyFormatterFormComponent', () => {
   });
 
   it('should have form elements', () => {
-    const fixture = TestBed.createComponent(MoneyFormatterFormComponent);
+    fixture = TestBed.createComponent(MoneyFormatterFormComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('input#amount')).toBeTruthy();
@@ -50,19 +51,19 @@ describe('MoneyFormatterFormComponent', () => {
   });
 
   it('clean up clears the data', () => {
-    const fixture = TestBed.createComponent(MoneyFormatterFormComponent);
-    const component = fixture.componentInstance;
-    component.cleanUp()
+    fixture = TestBed.createComponent(MoneyFormatterFormComponent);
+    component = fixture.componentInstance;
+    component.cleanUp();
     fixture.detectChanges();
-    expect(component.amount).toBe('')
-    expect(component.result).toBe('')
+    expect(component.amount).toBe('');
+    expect(component.result).toBe('');
   });
 
   it('format button calls service', () => {
-    const fixture = TestBed.createComponent(MoneyFormatterFormComponent);
-    let format: DebugElement = fixture.debugElement.query(By.css('button#format'));
+    fixture = TestBed.createComponent(MoneyFormatterFormComponent);
+    const format: DebugElement = fixture.debugElement.query(By.css('button#format'));
     format.nativeElement.click();
     fixture.detectChanges();
-    verify(moneyFormatterServiceMock.formatPrice(anyString())).once()
+    verify(moneyFormatterServiceMock.formatPrice(anyString())).once();
   });
 });

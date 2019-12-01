@@ -1,13 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { FormsModule } from "@angular/forms";
-import { MoneyFormatterFormComponent } from "./components/money-formatter-form/money-formatter-form.component";
-import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MoneyFormatterFormComponent } from './components/money-formatter-form/money-formatter-form.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[
+      imports: [
         FormsModule,
         HttpClientModule
       ],

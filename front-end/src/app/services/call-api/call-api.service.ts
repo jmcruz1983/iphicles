@@ -1,5 +1,4 @@
-import { Response } from '@angular/http';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,8 +8,8 @@ export class CallApiService {
 
   constructor(private http: HttpClient) {}
 
-  public post(url: string, body?: any, options?: HttpHeaders) {
-    let opts = this.configureHeaders(options);
+  public post(url: string, body?: any, options?: HttpHeaders): Promise<any> {
+    const opts = this.configureHeaders(options);
     return this.http
       .post(url, body ? body : '', {headers: opts, observe: 'response'})
       .toPromise()
@@ -27,14 +26,14 @@ export class CallApiService {
     return typeof res === 'string' ? JSON.parse(res) : res;
   }
 
-  private handleError(error: Response | any): Promise<any> {
+  private handleError(error: HttpErrorResponse | any): Promise<any> {
     return Promise.reject(error);
   }
 
   private configureHeaders(options: HttpHeaders): HttpHeaders {
     if (!options) {
       options = new HttpHeaders({
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       });
     }

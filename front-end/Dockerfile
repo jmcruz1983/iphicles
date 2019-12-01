@@ -15,8 +15,14 @@ COPY angular.json       \
     tsconfig.spec.json  \
     ./
 
+# linting the code
+RUN ng lint
+
 # build source
 RUN ng build
+
+# start app
+CMD ng serve --host 0.0.0.0
 
 # build front-end image for release
 FROM nginx:1.13.0
